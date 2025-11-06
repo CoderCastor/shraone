@@ -12,7 +12,7 @@ async function UserInfo() {
         alt="userImage"
         src={session?.user?.image as string}
       />
-      <div className="flex flex-col ga-2">
+      <div className="ga-2 flex flex-col">
         <h1>Name {session?.user?.name}</h1>
         <h2>Email {session?.user?.email}</h2>
         <h3>id {session?.user?.id}</h3>
@@ -21,4 +21,4 @@ async function UserInfo() {
   );
 }
 
-export default UserInfo
+export default UserInfo;
