@@ -9,17 +9,20 @@ function MainBar() {
   const scrollRef = useScrollRef();
 
   const { scrollY } = useScroll({
-    container: scrollRef,
+    container: scrollRef || undefined,
   });
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 50) {
-      // Scrolling DOWN → SHOW
-      setHidden(false);
-    } else if (latest < previous) {
-      // Scrolling UP → HIDE
-      setHidden(true);
+
+    if (previous !== undefined) {
+      if (latest > previous && latest > 50) {
+        // Scrolling DOWN → SHOW
+        setHidden(false);
+      } else if (latest < previous) {
+        // Scrolling UP → HIDE
+        setHidden(true);
+      }
     }
   });
 
