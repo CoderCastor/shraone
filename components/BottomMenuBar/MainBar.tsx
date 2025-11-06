@@ -18,10 +18,10 @@ function MainBar() {
     if (previous !== undefined) {
       if (latest > previous && latest > 50) {
         // Scrolling DOWN → SHOW
-        setHidden(false);
+        setHidden(true);
       } else if (latest < previous) {
         // Scrolling UP → HIDE
-        setHidden(true);
+        setHidden(false);
       }
     }
   });
