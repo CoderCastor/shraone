@@ -1,31 +1,40 @@
 "use client";
 
+
 import MainBar from "@/components/BottomMenuBar/MainBar";
-import { ScrollProvider } from "./ScrollContext";
+import { ScrollProvider, useScrollRef } from "./ScrollContext";
 
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
+function RoutesContent({ children }: { children: React.ReactNode }) {
+  const scrollRef = useScrollRef();
 
-function Layout(props: DashboardLayoutProps) {
   return (
-    <ScrollProvider>
-      <div
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0, 3, 4, 0.2) 1px, transparent 0)`,
-          backgroundSize: "8px 8px",
-          backgroundRepeat: "repeat",
-          position: "fixed",
-          inset: 0,
-          zIndex: 0,
-        }}
-        className="relative h-screen w-full bg-neutral-100"
-      >
-        <MainBar />
-        {props.children}
-      </div>
-    </ScrollProvider>
+    <div
+      ref={scrollRef}
+      className="h-screen w-full overflow-y-scroll"
+      style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0, 3, 4, 0.2) 1px, transparent 0)`,
+        backgroundSize: "8px 8px",
+        backgroundRepeat: "repeat",
+      }}
+    >
+      {children}
+    </div>
   );
 }
 
-export default Layout;
+export default function RoutesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  
+
+ 
+
+  return (
+    <ScrollProvider>
+     <MainBar />
+      <RoutesContent>{children}</RoutesContent>
+    </ScrollProvider>
+  );
+}
