@@ -8,7 +8,7 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <ScrollContext.Provider value={scrollRef}>
+    <ScrollContext.Provider value={scrollRef as RefObject<HTMLDivElement>}>
       {children}
     </ScrollContext.Provider>
   );
