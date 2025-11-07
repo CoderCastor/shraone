@@ -22,11 +22,15 @@ function TabBar({ hidden }: TabBarProps) {
   }, [pathname]);
 
   return (
-    <div className="absolute flex h-full w-full items-center justify-center gap-5">
+    <motion.div
+      animate={hidden ? { opacity: 0, display: "none" } : {}}
+      transition={{delay:0.3}}
+      className="absolute flex h-full w-full items-center justify-center gap-5"
+    >
       <motion.div
-        animate={hidden ? { opacity: 0, display: "none" } : {}}
-        transition={{ duration: 0.3, delay: 0.3 }}
-        className="px z-40 flex h-full flex-1 items-center justify-around rounded-2xl bg-black shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
+        animate={hidden ? { opacity: 0 } : {}}
+        transition={{ duration: 0.3, delay: 0.4 }}
+        className="px z-40 flex h-full flex-1 items-center justify-around rounded-2xl bg-black"
       >
         <motion.button
           onClick={() => {
@@ -99,7 +103,8 @@ function TabBar({ hidden }: TabBarProps) {
         </motion.button>
       </motion.div>
       <motion.div
-        animate={hidden ? { x: -70, opacity: 0 } : {}}
+        animate={hidden ? { x: -100, opacity: 0 } : {}}
+        transition={{ duration: 0.3 }}
         className="flex size-16 items-center justify-center rounded-full bg-black shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
       >
         <svg
@@ -122,7 +127,7 @@ function TabBar({ hidden }: TabBarProps) {
           />
         </svg>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 

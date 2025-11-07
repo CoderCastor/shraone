@@ -41,9 +41,9 @@ function MainBar() {
         hidden: { y: 200, opacity: 0 },
       }}
       initial="visible"
-      animate={hidden ? { y: 10, height: 60, width: 250 } : "visible"}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed right-0 bottom-10 left-0 z-10 mx-auto flex h-18 w-10/12 overflow-hidden rounded-2xl px-2 "
+      animate={hidden ? { y: 18, height: 40, width: 250 } : "visible"}
+      transition={{ duration: 0.3, ease: "easeInOut",delay:0.3 }}
+      className="fixed right-0 bottom-7 left-0 z-10 mx-auto flex h-18 w-10/12 overflow-hidden rounded-2xl px-2 "
     >
       <div className="relative h-full w-full overflow-hidden rounded-2xl">
         <TabBar hidden={hidden} />
